@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!-- theme: getboostrap creative free theme + bootstrap cdn -->
+<!-- responsive -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Marvel Superheroes Wars">
+    <meta name="author" content="Badragan Alexandru-Stefan">
+
+    <title>Marvel Superheroes Wars | No account required</title>
+
+    <!-- Font Awesome Icons -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS - Includes Bootstrap -->
+    <link href="css/creative.css" rel="stylesheet">
+	
+
+	<!-- !!GAME SCRIPTS!! -->
+	<!--             -->
+	<!-- Repository -->
+    <script type="text/javascript" src="./include/repository/planets.js"></script>
+    <script type="text/javascript" src="./include/repository/characters.js"></script>
+	
+    <!-- Models -->
+    <script type="text/javascript" src="./include/model/planet.js"></script>
+    <script type="text/javascript" src="./include/model/character.js"></script>
+
+    <!-- Controllers -->
+    <script type="text/javascript" src="./include/controller/battleController.js"></script>
+    
+	<!-- Views -->
+	<script type="text/javascript" src="./include/view/main.js"></script>
+	
+	<!-- Utils -->
+	<script type="text/javascript" src="./include/utils/loadXML.js"></script>
+	<script type="text/javascript" src="./include/utils/loadJSON.js"></script>
+	<script type="text/javascript" src="./include/utils/checkFile.js"></script>
+</head>
+
+<body id="page-top">
+
+	<!-- Navbar -->
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar fixed-top" id="mainNav">
+        <a class="navbar-brand text-primary js-scroll-trigger" href="#header"><strong>MSW</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li>
+                    <a class="nav-link text-primary" href="#" data-toggle="modal" data-target="#readme">.__readme</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header section -->
+    <header class="masthead" id="header">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-10 align-self-end">
+					<hr style="padding: 0.5rem;">
+                    <h1 class="text-uppercase text-white font-weight-bold">Marvel Superhero Wars</h1>
+                    <hr style="padding: 0.5rem;">
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 font-weight-light mb-5">- javascript -</p>
+                    <a class="btn btn-secondary btn-xl js-scroll-trigger" href="#options">Play now</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+	<!--div class="alert alert-success" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<strong>Success!</strong>
+	</div-->
+
+    <!-- Game options section -->
+    <section class="page-section" >
+        <div class="container">
+            <h2 class="text-center mt-0" id="options">game options</h2>
+            <hr class="divider my-4">
+            
+			<div class="row">
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="mt-5">
+                        <h3 class="h4 mb-2">planet</h3>
+                        <i class="fas fa-4x fa-adjust text-secondary mb-4"></i>
+                        <p class="text-muted mb-0">
+                            <select class="form-control" id="planets" onchange="getPlanetStats()">
+                                <option value=-1>planets not loaded</option>
+                            </select>
+                        </p>
+
+                        <hr>
+						
+						<!-- Planet image and stats -->
+						<section id="portfolio">
+							<div class="container-fluid p-0">
+								<div id="planet_option">
+									<a class="portfolio-box" href="#">
+									<img class="img-fluid" src="img/planets/Earth.jpg" alt="">
+									<div class="portfolio-box-caption">
+										<div class="project-category text-white-50">
+											Stats modifiers
+										</div>
+										<div class="project-name">
+											Hero health <br>
+											Hero attack <br><br>
+											Villain health <br>
+											Villain attack <br>
+										</div>
+									</div>
+									</a>
+								</div>
+							</div>
+						</section>	
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="mt-5">
+                        <h3 class="h4 mb-2">hero</h3>
+                        <i class="fas fa-4x fa-mask text-secondary mb-4"></i>
+                        <p class="text-muted mb-0">
+                            <select class="form-control" id="heroes" onchange="getHeroStats()">
+                                <option value=-1>characters not loaded</option>
+                            </select>
+                        </p>
+
+                        <hr>
+
+						<!-- Hero image and stats -->
+						<section id="portfolio">
+							<div class="container-fluid p-0">
+								<div id="hero_option">
+									<a class="portfolio-box" href="#">
+									<img class="img-fluid" src="img/characters/Captain America.jpg" alt="">
+									<div class="portfolio-box-caption">
+										<div class="project-category text-white-50">
+											Stats
+										</div>
+										<div class="project-name">
+											Health <br>
+											Attack <br>
+										</div>
+									</div>
+									</a>
+								</div>
+							</div>
+						</section>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="mt-5">
+                        <h3 class="h4 mb-2">villain</h3>
+                        <i class="fas fa-4x fa-angry text-secondary mb-4"></i>
+                        <p class="text-muted mb-0">
+                            <select class="form-control" id="villains" onchange="getVillainStats()">
+                                <option value=-1>characters not loaded</option>
+                            </select>
+                        </p>
+
+                        <hr>
+
+						<!-- Villain image and stats -->
+						<section id="portfolio">
+							<div class="container-fluid p-0">
+								<div id="villain_option">
+									<a class="portfolio-box" href="#">
+									<img class="img-fluid" src="img/characters/Thanos.jpg" alt="">
+									<div class="portfolio-box-caption">
+										<div class="project-category text-white-50">
+											Stats
+										</div>
+										<div class="project-name">
+											Health <br>
+											Attack <br>
+										</div>
+									</div>
+									</a>
+								</div>
+							</div>
+						</section>
+
+                    </div>
+                </div>
+            </div>
+            <br>
+			
+            <div class="row">
+                <a class="btn btn-light btn-xl js-scroll-trigger" href="#stats" style="float: none; margin: 0 auto;" onclick="battle_middle()">Start Battle</a>
+            </div>
+			
+        </div>
+    </section>
+
+    <!-- Battle stats section -->
+    <section class="page-section bg-dark" id="stats">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h2 class="text-white mt-0">battle stats</h2>
+                    <hr class="divider light my-4">
+                    <p class="text-white-50 mb-4" id="battle">
+                        - no stats at the moment -
+                    </p>
+				</div>
+				<div class="col-lg-6 text-center">
+				
+                    <h2 class="text-white mt-0">more stats</h2>
+                    <hr class="divider light my-4">
+					
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+									crits</a>
+								</h4>
+							</div>
+							<div id="collapse1" class="panel-collapse collapse in">
+								<div class="panel-body text-white-50" id="crit_stats">No battle has begun yet</div>
+							</div>
+						</div>
+						<br>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+									damage</a>
+								</h4>
+							</div>
+							<div id="collapse2" class="panel-collapse collapse">
+								<div class="panel-body text-white-50" id="damage_stats">No battle has begun yet</div>
+							</div>
+						</div>
+					</div>
+                </div>
+			</div>
+			
+			<hr>
+			
+			<div class="row">
+			<a class="btn btn-light btn-xl js-scroll-trigger" href="#options" style="float: none; margin: 0 auto;" id="play_again">Go back</a>
+			</div>
+		</div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light py-5" style="">
+        <div class="container">
+            <div class="small text-center text-muted">- &copy; github.com/alexstefangit -</div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/creative.min.js"></script>
+	
+	<script>
+		// fill the repository
+
+		// check if the files exist
+		if (checkStatus("planets.xml"))
+			loadXML_planets();
+		
+		//else if (checkStatus("characters.json"))
+			//loadJSON_planets();  <- is not working properly (??)
+		
+		else alert ("Error while loading PLANETS");
+		
+		// check if the files exist
+		if (checkStatus("characters.xml"))
+			loadXML_characters();
+		
+		else if (checkStatus("characters.json"))
+			loadJSON_characters();
+		
+		else alert ("Error while loading CHARACTERS");
+	</script>
+
+<!-- Readme dialog -->
+<div class="modal fade" id="readme" tabindex="-1" role="dialog" aria-labelledby="readmeLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="readmeLabel">read me</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				
+				each character (hero or villain) has an initial health, and attack stats
+				<hr>
+				each planet contains health & attack modifiers for villains and heroes, that are applied before the fight begins
+				<hr>
+				<i class="fas fa-1x fa-exclamation text-secondary mb-4"></i> hover on planets / characters thumbnails to see their stats
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Got it</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>
